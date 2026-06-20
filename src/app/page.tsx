@@ -20,9 +20,9 @@ const navItems = ["Projects", "Skills", "Education", "Contact"];
 const projects = [
   {
     name: "Guardian Node",
-    type: "Final Year Research Project",
+    type: "Completed Final Year Project",
     description:
-      "Smart IoT-based public safety monitoring system that detects dangerous sounds such as screams and gunshots in real time, then sends cloud-connected alerts with incident evidence.",
+      "Completed smart IoT-based public safety monitoring system that detects dangerous sounds such as screams and gunshots in real time, then sends cloud-connected alerts with incident evidence.",
     stack: ["Python", "TensorFlow", "Raspberry Pi", "Firebase", "Java"],
   },
   {
@@ -61,7 +61,7 @@ const skillGroups = [
 
 const education = [
   {
-    year: "2025 - Present",
+    year: "Completed",
     title: "BSc (Hons) in Computer Science",
     place: "SLIIT City Uni, affiliated with the University of Bedfordshire, UK",
   },
@@ -131,13 +131,13 @@ export default function Home() {
         >
           <div className="mb-6 inline-flex w-fit items-center gap-2 rounded border border-[#06B6D4]/35 bg-[#1E293B]/78 px-3 py-2 text-sm font-medium text-[#94A3B8]">
             <Sparkles size={16} className="text-[#06B6D4]" aria-hidden />
-            Computer Science Undergraduate
+            Computer Science Graduate
           </div>
-          <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-[#F8FAFC] sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-[#F8FAFC] sm:text-6xl lg:text-6xl">
             Full-stack developer building practical software for web, mobile, and IoT.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#94A3B8]">
-            Dedicated and detail-oriented Computer Science undergraduate with hands-on
+            Dedicated and detail-oriented Computer Science graduate with hands-on
             experience in full-stack web development, Java desktop applications,
             Android development, database integration, API usage, and real-time
             IoT-based systems.
@@ -164,7 +164,7 @@ export default function Home() {
             {[
               ["Location", "Trincomalee, Sri Lanka"],
               ["Focus", "Software Engineering"],
-              ["Seeking", "Internship / Entry-level"],
+              ["Seeking", "Entry-level / Junior roles"],
             ].map(([label, value]) => (
               <div key={label}>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#64748B]">
@@ -193,11 +193,11 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
             <div className="mb-5 grid gap-3 rounded border border-[#F8FAFC]/10 bg-[#0F172A]/70 p-4 backdrop-blur">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#06B6D4]">
-                Current research
+                Completed final-year project
               </p>
               <p className="text-2xl font-semibold text-[#F8FAFC]">Guardian Node</p>
               <p className="text-sm leading-6 text-[#94A3B8]">
-                Intelligent public safety monitoring using IoT and machine learning.
+                Completed intelligent public safety monitoring using IoT and machine learning.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -344,7 +344,7 @@ export default function Home() {
               Trincomalee / Sri Lanka
             </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-[#F8FAFC] md:text-5xl">
-              Open to internship, entry-level, and collaborative software opportunities.
+              Open to entry-level, junior, and collaborative software opportunities.
             </h2>
           </div>
           <div className="flex flex-col justify-end gap-3 sm:flex-row md:flex-col">

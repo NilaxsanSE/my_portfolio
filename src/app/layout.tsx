@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Suvendralingam Nilaxsan | Software Engineer Portfolio",
   description:
-    "Computer Science undergraduate and full-stack developer portfolio featuring web, mobile, Java desktop, and IoT-based software projects.",
+    "Computer Science graduate and full-stack developer portfolio featuring web, mobile, Java desktop, and IoT-based software projects.",
 };
 
 export default function RootLayout({
