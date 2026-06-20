@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NilaxsanSE | Software Engineer Portfolio",
+  title: "Suvendralingam Nilaxsan | Software Engineer Portfolio",
   description:
-    "Professional software engineering portfolio built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Vercel.",
+    "Computer Science undergraduate and full-stack developer portfolio featuring web, mobile, Java desktop, and IoT-based software projects.",
 };
 
 export default function RootLayout({
