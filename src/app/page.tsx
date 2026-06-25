@@ -82,16 +82,22 @@ const education = [
     year: "Completed",
     title: "BSc (Hons) in Computer Science",
     place: "SLIIT City Uni, affiliated with the University of Bedfordshire, UK",
+    focus: "Advanced computing, software engineering practice, research project delivery, and applied development.",
+    badge: "Degree",
   },
   {
     year: "2023 - 2025",
     title: "Diploma in Computer Science and Software Engineering",
     place: "SLIIT City Uni | GPA: 3.35 / 4.00",
+    focus: "Programming fundamentals, database systems, web development, object-oriented design, and software lifecycle work.",
+    badge: "Diploma",
   },
   {
     year: "2016 - 2019",
     title: "G.C.E. Advanced Level - Mathematics Stream",
     place: "T/ Orr's Hill Vivekananda College",
+    focus: "Mathematics stream foundation with analytical thinking and problem-solving preparation for computing.",
+    badge: "School",
   },
 ];
 
@@ -476,25 +482,66 @@ export default function Home() {
       </section>
 
       <section id="education" className="bg-[#1E293B] px-5 py-20 md:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 flex items-center gap-3">
-            <GraduationCap size={24} className="text-[#06B6D4]" aria-hidden />
-            <h2 className="text-4xl font-semibold text-[#F8FAFC] md:text-5xl">Education</h2>
-          </div>
-          <div className="grid gap-4">
-            {education.map((item) => (
-              <article
-                key={item.title}
-                className="grid gap-4 border-t border-[#F8FAFC]/10 py-6 md:grid-cols-[180px_1fr]"
-              >
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#06B6D4]">
-                  {item.year}
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+          <div className="rounded border border-[#06B6D4]/25 bg-[#0F172A] p-6 md:p-8">
+            <div className="flex items-center gap-3">
+              <span className="grid size-12 place-items-center rounded bg-[#3B82F6]/14 text-[#06B6D4]">
+                <GraduationCap size={24} aria-hidden />
+              </span>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#06B6D4]">
+                Education
+              </p>
+            </div>
+            <h2 className="mt-8 text-4xl font-semibold leading-tight text-[#F8FAFC] md:text-5xl">
+              Academic foundation for software engineering work.
+            </h2>
+            <p className="mt-5 text-base leading-7 text-[#94A3B8]">
+              My studies combine computer science theory with practical software
+              development, database work, web technologies, and a completed final-year
+              IoT and machine learning project.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              <div className="rounded border border-[#F8FAFC]/10 bg-[#1E293B] p-4">
+                <p className="text-3xl font-semibold text-[#F8FAFC]">3.35</p>
+                <p className="mt-1 text-sm font-medium uppercase tracking-[0.16em] text-[#94A3B8]">
+                  Diploma GPA / 4.00
                 </p>
-                <div>
-                  <h3 className="text-2xl font-semibold text-[#F8FAFC]">{item.title}</h3>
-                  <p className="mt-2 max-w-3xl text-base leading-7 text-[#94A3B8]">{item.place}</p>
+              </div>
+              <div className="rounded border border-[#F8FAFC]/10 bg-[#1E293B] p-4">
+                <p className="text-3xl font-semibold text-[#F8FAFC]">Final-year</p>
+                <p className="mt-1 text-sm font-medium uppercase tracking-[0.16em] text-[#94A3B8]">
+                  Research completed
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            {education.map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                variants={fadeUp}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="relative overflow-hidden rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 p-6"
+              >
+                <div className="absolute left-0 top-0 h-full w-1 bg-[#06B6D4]" />
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <span className="inline-flex rounded bg-[#3B82F6]/12 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#06B6D4] ring-1 ring-[#3B82F6]/25">
+                      {item.badge}
+                    </span>
+                    <h3 className="mt-4 text-2xl font-semibold text-[#F8FAFC]">{item.title}</h3>
+                  </div>
+                  <p className="w-fit rounded border border-[#06B6D4]/25 px-3 py-2 text-sm font-bold uppercase tracking-[0.14em] text-[#06B6D4]">
+                    {item.year}
+                  </p>
                 </div>
-              </article>
+                <p className="mt-4 text-base font-medium leading-7 text-[#F8FAFC]">{item.place}</p>
+                <p className="mt-3 max-w-3xl text-base leading-7 text-[#94A3B8]">{item.focus}</p>
+              </motion.article>
             ))}
           </div>
         </div>
