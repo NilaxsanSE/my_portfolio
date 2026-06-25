@@ -27,6 +27,8 @@ const projects = [
     description:
       "Completed smart IoT-based public safety monitoring system that detects dangerous sounds such as screams and gunshots in real time, then sends cloud-connected alerts with incident evidence.",
     stack: ["Python", "TensorFlow", "Raspberry Pi", "Firebase", "Java"],
+    preview: "/project-guardian-node.png",
+    previewAlt: "Guardian Node safety monitoring dashboard preview",
     highlights: [
       "Real-time audio classification for emergency sound patterns",
       "Event-triggered camera recording with incident evidence",
@@ -39,6 +41,8 @@ const projects = [
     description:
       "Retail management platform planned for product, inventory, supplier, order, customer workflow, role-based access, and administrative dashboard operations.",
     stack: ["React", "Node.js", "Express.js", "MongoDB"],
+    preview: "/project-new-star-kids-wear.png",
+    previewAlt: "New Star Kid's Wear e-commerce management interface preview",
     highlights: [
       "Product, inventory, supplier, and order management planning",
       "Agile requirement analysis and risk identification",
@@ -51,6 +55,8 @@ const projects = [
     description:
       "Full-stack system for license applications, renewals, user records, authentication, administrative dashboards, CRUD workflows, and responsive interaction.",
     stack: ["MongoDB", "Express.js", "React", "Node.js", "CSS"],
+    preview: "/project-driving-license.png",
+    previewAlt: "Driving License Management System admin panel preview",
     highlights: [
       "Authentication and role-aware administrative workflows",
       "CRUD operations for applications, renewals, and user records",
@@ -262,28 +268,38 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          className="relative min-h-[520px] overflow-hidden rounded border border-[#06B6D4]/25 bg-[#1E293B]"
+          className="relative min-h-[560px] overflow-hidden rounded border border-[#06B6D4]/25 bg-[#1E293B]"
         >
           <Image
-            src="/hero-workspace.png"
-            alt="Abstract software engineering workspace"
+            src="/nilaxsan-profile.jpeg"
+            alt="Portrait of Suvendralingam Nilaxsan"
             fill
             priority
-            className="object-cover"
+            sizes="(min-width: 768px) 48vw, 100vw"
+            className="object-cover object-[50%_18%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/88 via-[#0F172A]/18 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/92 via-[#0F172A]/14 to-[#0F172A]/12" />
+          <div className="absolute right-5 top-5 hidden w-56 overflow-hidden rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 shadow-2xl shadow-[#0F172A]/35 backdrop-blur sm:block">
+            <Image
+              src="/project-guardian-node.png"
+              alt="Guardian Node project interface preview"
+              width={448}
+              height={284}
+              className="h-auto w-full"
+            />
+          </div>
           <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
             <div className="mb-5 grid gap-3 rounded border border-[#F8FAFC]/10 bg-[#0F172A]/70 p-4 backdrop-blur">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#06B6D4]">
-                Completed final-year project
+                Developer portfolio
               </p>
-              <p className="text-2xl font-semibold text-[#F8FAFC]">Guardian Node</p>
+              <p className="text-2xl font-semibold text-[#F8FAFC]">Suvendralingam Nilaxsan</p>
               <p className="text-sm leading-6 text-[#94A3B8]">
-                Completed intelligent public safety monitoring using IoT and machine learning.
+                Full-stack developer with completed IoT, web, database, and Java application projects.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              {["React", "Node.js", "Firebase", "Raspberry Pi"].map((item) => (
+              {["Full-stack", "IoT systems", "MERN", "Firebase"].map((item) => (
                 <span
                   key={item}
                   className="rounded bg-[#3B82F6]/18 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#F8FAFC] ring-1 ring-[#3B82F6]/30 backdrop-blur"
@@ -319,15 +335,15 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#06B6D4]">
-                Projects
+                Project interfaces
               </p>
               <h2 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight text-[#F8FAFC] md:text-5xl">
-                Work shaped around real systems, useful workflows, and clean interfaces.
+                Visual previews of real systems, useful workflows, and clean interfaces.
               </h2>
             </div>
             <p className="max-w-md text-base leading-7 text-[#94A3B8]">
-              Projects from your CV are now represented as portfolio-ready case study
-              cards. We can add live links and screenshots next.
+              These preview images represent the product interfaces behind each
+              portfolio project, giving visitors a faster sense of what each system does.
             </p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -339,30 +355,41 @@ export default function Home() {
                 viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
-                className="flex min-h-full flex-col rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.25)]"
+                className="flex min-h-full flex-col overflow-hidden rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 shadow-[0_20px_60px_rgba(15,23,42,0.25)]"
               >
-                <p className="text-sm font-semibold text-[#06B6D4]">{project.type}</p>
-                <h3 className="mt-4 text-2xl font-semibold text-[#F8FAFC]">{project.name}</h3>
-                <p className="mt-4 text-base leading-7 text-[#94A3B8]">
-                  {project.description}
-                </p>
-                <div className="mt-6 space-y-3 border-t border-[#F8FAFC]/10 pt-5">
-                  {project.highlights.map((highlight) => (
-                    <div key={highlight} className="flex gap-3 text-sm leading-6 text-[#94A3B8]">
-                      <span className="mt-2 size-2 shrink-0 rounded-full bg-[#06B6D4]" />
-                      <span>{highlight}</span>
-                    </div>
-                  ))}
+                <div className="relative aspect-[1.55] border-b border-[#F8FAFC]/10 bg-[#1E293B]">
+                  <Image
+                    src={project.preview}
+                    alt={project.previewAlt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
-                <div className="mt-6 flex flex-wrap gap-2 pt-2">
-                  {project.stack.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded border border-[#3B82F6]/25 bg-[#3B82F6]/10 px-3 py-1.5 text-xs font-semibold text-[#F8FAFC]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="text-sm font-semibold text-[#06B6D4]">{project.type}</p>
+                  <h3 className="mt-4 text-2xl font-semibold text-[#F8FAFC]">{project.name}</h3>
+                  <p className="mt-4 text-base leading-7 text-[#94A3B8]">
+                    {project.description}
+                  </p>
+                  <div className="mt-6 space-y-3 border-t border-[#F8FAFC]/10 pt-5">
+                    {project.highlights.map((highlight) => (
+                      <div key={highlight} className="flex gap-3 text-sm leading-6 text-[#94A3B8]">
+                        <span className="mt-2 size-2 shrink-0 rounded-full bg-[#06B6D4]" />
+                        <span>{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-2 pt-2">
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded border border-[#3B82F6]/25 bg-[#3B82F6]/10 px-3 py-1.5 text-xs font-semibold text-[#F8FAFC]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.article>
             ))}
