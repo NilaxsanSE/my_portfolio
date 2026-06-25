@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     "Computer Science graduate and full-stack developer portfolio featuring web, mobile, Java desktop, and IoT-based software projects.",
   icons: {
     icon: [
-      { url: "/favicon.ico?v=2", sizes: "any" },
-      { url: "/icon.png?v=2", type: "image/png", sizes: "32x32" },
+      { url: "/portfolio-icon-v3.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.ico?v=3", sizes: "any" },
     ],
-    shortcut: "/favicon.ico?v=2",
-    apple: "/icon.png?v=2",
+    shortcut: "/portfolio-icon-v3.png",
+    apple: "/portfolio-icon-v3.png",
   },
 };
 
