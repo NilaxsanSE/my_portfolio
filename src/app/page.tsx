@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Mail,
   Menu,
+  MessageCircle,
   MapPin,
   Phone,
   Send,
@@ -572,6 +573,15 @@ export default function Home() {
             >
               <Phone size={17} aria-hidden />
               Call
+            </a>
+            <a
+              href="https://wa.me/94740707728"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded border border-[#06B6D4]/30 px-5 text-sm font-bold text-[#F8FAFC] transition hover:bg-[#0F172A]"
+            >
+              <MessageCircle size={17} aria-hidden />
+              WhatsApp
             </a>
             <a
               href="https://linkedin.com/in/s-nilaxsan-96b762341"
