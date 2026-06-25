@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowDownToLine,
   ArrowUpRight,
@@ -16,7 +16,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const navItems = ["Projects", "Skills", "Process", "Education", "Contact"];
 
@@ -27,8 +27,6 @@ const projects = [
     description:
       "Completed smart IoT-based public safety monitoring system that detects dangerous sounds such as screams and gunshots in real time, then sends cloud-connected alerts with incident evidence.",
     stack: ["Python", "TensorFlow", "Raspberry Pi", "Firebase", "Java"],
-    preview: "/project-guardian-node.png",
-    previewAlt: "Guardian Node safety monitoring dashboard preview",
     highlights: [
       "Real-time audio classification for emergency sound patterns",
       "Event-triggered camera recording with incident evidence",
@@ -41,8 +39,6 @@ const projects = [
     description:
       "Retail management platform planned for product, inventory, supplier, order, customer workflow, role-based access, and administrative dashboard operations.",
     stack: ["React", "Node.js", "Express.js", "MongoDB"],
-    preview: "/project-new-star-kids-wear.png",
-    previewAlt: "New Star Kid's Wear e-commerce management interface preview",
     highlights: [
       "Product, inventory, supplier, and order management planning",
       "Agile requirement analysis and risk identification",
@@ -55,8 +51,6 @@ const projects = [
     description:
       "Full-stack system for license applications, renewals, user records, authentication, administrative dashboards, CRUD workflows, and responsive interaction.",
     stack: ["MongoDB", "Express.js", "React", "Node.js", "CSS"],
-    preview: "/project-driving-license.png",
-    previewAlt: "Driving License Management System admin panel preview",
     highlights: [
       "Authentication and role-aware administrative workflows",
       "CRUD operations for applications, renewals, and user records",
@@ -128,6 +122,13 @@ const process = [
   },
 ];
 
+const roles = [
+  "Full-stack Developer",
+  "Web Developer",
+  "Application Developer",
+  "Android / iOS Developer",
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
@@ -135,6 +136,15 @@ const fadeUp = {
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setRoleIndex((current) => (current + 1) % roles.length);
+    }, 2400);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#0F172A] text-[#F8FAFC]">
@@ -222,7 +232,22 @@ export default function Home() {
             Computer Science Graduate
           </div>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-[#F8FAFC] sm:text-6xl lg:text-6xl">
-            Full-stack developer building practical software for web, mobile, and IoT.
+            I build practical software as a{" "}
+            <span className="relative inline-grid min-h-[1.14em] align-bottom text-[#06B6D4]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roles[roleIndex]}
+                  initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -18, filter: "blur(8px)" }}
+                  transition={{ duration: 0.42, ease: "easeOut" }}
+                  className="col-start-1 row-start-1"
+                >
+                  {roles[roleIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+            .
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#94A3B8]">
             Dedicated and detail-oriented Computer Science graduate with hands-on
@@ -279,15 +304,6 @@ export default function Home() {
             className="object-cover object-[50%_18%]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/92 via-[#0F172A]/14 to-[#0F172A]/12" />
-          <div className="absolute right-5 top-5 hidden w-56 overflow-hidden rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 shadow-2xl shadow-[#0F172A]/35 backdrop-blur sm:block">
-            <Image
-              src="/project-guardian-node.png"
-              alt="Guardian Node project interface preview"
-              width={448}
-              height={284}
-              className="h-auto w-full"
-            />
-          </div>
           <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
             <div className="mb-5 grid gap-3 rounded border border-[#F8FAFC]/10 bg-[#0F172A]/70 p-4 backdrop-blur">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#06B6D4]">
@@ -335,15 +351,15 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#06B6D4]">
-                Project interfaces
+                Projects
               </p>
               <h2 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight text-[#F8FAFC] md:text-5xl">
-                Visual previews of real systems, useful workflows, and clean interfaces.
+                Work shaped around real systems, useful workflows, and clean interfaces.
               </h2>
             </div>
             <p className="max-w-md text-base leading-7 text-[#94A3B8]">
-              These preview images represent the product interfaces behind each
-              portfolio project, giving visitors a faster sense of what each system does.
+              Projects from my academic and practical work, presented as focused
+              case-study cards with the core problem, stack, and outcomes.
             </p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -355,41 +371,30 @@ export default function Home() {
                 viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
-                className="flex min-h-full flex-col overflow-hidden rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 shadow-[0_20px_60px_rgba(15,23,42,0.25)]"
+                className="flex min-h-full flex-col rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.25)]"
               >
-                <div className="relative aspect-[1.55] border-b border-[#F8FAFC]/10 bg-[#1E293B]">
-                  <Image
-                    src={project.preview}
-                    alt={project.previewAlt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover"
-                  />
+                <p className="text-sm font-semibold text-[#06B6D4]">{project.type}</p>
+                <h3 className="mt-4 text-2xl font-semibold text-[#F8FAFC]">{project.name}</h3>
+                <p className="mt-4 text-base leading-7 text-[#94A3B8]">
+                  {project.description}
+                </p>
+                <div className="mt-6 space-y-3 border-t border-[#F8FAFC]/10 pt-5">
+                  {project.highlights.map((highlight) => (
+                    <div key={highlight} className="flex gap-3 text-sm leading-6 text-[#94A3B8]">
+                      <span className="mt-2 size-2 shrink-0 rounded-full bg-[#06B6D4]" />
+                      <span>{highlight}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-sm font-semibold text-[#06B6D4]">{project.type}</p>
-                  <h3 className="mt-4 text-2xl font-semibold text-[#F8FAFC]">{project.name}</h3>
-                  <p className="mt-4 text-base leading-7 text-[#94A3B8]">
-                    {project.description}
-                  </p>
-                  <div className="mt-6 space-y-3 border-t border-[#F8FAFC]/10 pt-5">
-                    {project.highlights.map((highlight) => (
-                      <div key={highlight} className="flex gap-3 text-sm leading-6 text-[#94A3B8]">
-                        <span className="mt-2 size-2 shrink-0 rounded-full bg-[#06B6D4]" />
-                        <span>{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex flex-wrap gap-2 pt-2">
-                    {project.stack.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded border border-[#3B82F6]/25 bg-[#3B82F6]/10 px-3 py-1.5 text-xs font-semibold text-[#F8FAFC]"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-6 flex flex-wrap gap-2 pt-2">
+                  {project.stack.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded border border-[#3B82F6]/25 bg-[#3B82F6]/10 px-3 py-1.5 text-xs font-semibold text-[#F8FAFC]"
+                    >
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </motion.article>
             ))}
