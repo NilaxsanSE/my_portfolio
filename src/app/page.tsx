@@ -233,7 +233,7 @@ export default function Home() {
           </div>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] text-[#F8FAFC] sm:text-6xl lg:text-6xl">
             I build practical software as a{" "}
-            <span className="relative inline-grid min-h-[1.14em] align-bottom text-[#06B6D4]">
+            <span className="relative inline-grid min-h-[1.14em] align-bottom text-4xl text-[#06B6D4] sm:text-5xl lg:text-5xl">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={roles[roleIndex]}
