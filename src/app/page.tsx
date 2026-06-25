@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import {
   ArrowDownToLine,
   ArrowUpRight,
@@ -8,14 +9,16 @@ import {
   Database,
   GraduationCap,
   Mail,
+  Menu,
   MapPin,
   Phone,
   Send,
   Sparkles,
+  X,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const navItems = ["Projects", "Skills", "Education", "Contact"];
+const navItems = ["Projects", "Skills", "Process", "Education", "Contact"];
 
 const projects = [
   {
@@ -24,6 +27,11 @@ const projects = [
     description:
       "Completed smart IoT-based public safety monitoring system that detects dangerous sounds such as screams and gunshots in real time, then sends cloud-connected alerts with incident evidence.",
     stack: ["Python", "TensorFlow", "Raspberry Pi", "Firebase", "Java"],
+    highlights: [
+      "Real-time audio classification for emergency sound patterns",
+      "Event-triggered camera recording with incident evidence",
+      "Cloud alert workflow using Firebase for faster response",
+    ],
   },
   {
     name: "New Star Kid's Wear",
@@ -31,6 +39,11 @@ const projects = [
     description:
       "Retail management platform planned for product, inventory, supplier, order, customer workflow, role-based access, and administrative dashboard operations.",
     stack: ["React", "Node.js", "Express.js", "MongoDB"],
+    highlights: [
+      "Product, inventory, supplier, and order management planning",
+      "Agile requirement analysis and risk identification",
+      "Admin dashboard workflows for retail operations",
+    ],
   },
   {
     name: "Driving License Management System",
@@ -38,6 +51,11 @@ const projects = [
     description:
       "Full-stack system for license applications, renewals, user records, authentication, administrative dashboards, CRUD workflows, and responsive interaction.",
     stack: ["MongoDB", "Express.js", "React", "Node.js", "CSS"],
+    highlights: [
+      "Authentication and role-aware administrative workflows",
+      "CRUD operations for applications, renewals, and user records",
+      "Responsive UI for smoother real-time interaction",
+    ],
   },
 ];
 
@@ -86,12 +104,32 @@ const strengths = [
   "Machine learning basics",
 ];
 
+const process = [
+  {
+    step: "01",
+    title: "Understand the workflow",
+    body: "I start by mapping users, data, risks, and the real-world process the software needs to support.",
+  },
+  {
+    step: "02",
+    title: "Build clear interfaces",
+    body: "I focus on responsive screens, straightforward actions, and database-backed features that are easy to maintain.",
+  },
+  {
+    step: "03",
+    title: "Test and improve",
+    body: "I validate behavior through build checks, manual review, and practical iteration until the experience feels dependable.",
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-[#0F172A] text-[#F8FAFC]">
       <header className="sticky top-0 z-50 border-b border-[#F8FAFC]/10 bg-[#0F172A]/88 backdrop-blur-xl">
@@ -111,14 +149,58 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <a
-            href="mailto:s.nilaxsan63@gmail.com"
-            className="inline-flex h-10 items-center gap-2 rounded bg-[#3B82F6] px-4 text-sm font-semibold text-[#F8FAFC] transition hover:bg-[#06B6D4]"
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="/suvendralingam-nilaxsan-cv.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-10 items-center gap-2 rounded border border-[#06B6D4]/30 px-4 text-sm font-semibold text-[#F8FAFC] transition hover:bg-[#1E293B]"
+            >
+              <ArrowDownToLine size={16} aria-hidden />
+              CV
+            </a>
+            <a
+              href="mailto:s.nilaxsan63@gmail.com"
+              className="inline-flex h-10 items-center gap-2 rounded bg-[#3B82F6] px-4 text-sm font-semibold text-[#F8FAFC] transition hover:bg-[#06B6D4]"
+            >
+              <Mail size={16} aria-hidden />
+              Contact
+            </a>
+          </div>
+          <button
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="grid size-10 place-items-center rounded border border-[#F8FAFC]/10 bg-[#1E293B] text-[#F8FAFC] md:hidden"
           >
-            <Mail size={16} aria-hidden />
-            Contact
-          </a>
+            {isMenuOpen ? <X size={20} aria-hidden /> : <Menu size={20} aria-hidden />}
+          </button>
         </nav>
+        {isMenuOpen ? (
+          <div className="border-t border-[#F8FAFC]/10 bg-[#0F172A] px-5 py-4 md:hidden">
+            <div className="mx-auto grid max-w-7xl gap-2">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="rounded border border-[#F8FAFC]/10 bg-[#1E293B] px-4 py-3 text-sm font-semibold text-[#F8FAFC]"
+                >
+                  {item}
+                </a>
+              ))}
+              <a
+                href="/suvendralingam-nilaxsan-cv.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded bg-[#3B82F6] px-4 py-3 text-sm font-semibold text-[#F8FAFC]"
+              >
+                Download CV
+              </a>
+            </div>
+          </div>
+        ) : null}
       </header>
 
       <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 pt-12 md:grid-cols-[1.04fr_0.96fr] md:px-8 md:pb-20 md:pt-20">
@@ -214,6 +296,24 @@ export default function Home() {
         </motion.div>
       </section>
 
+      <section className="border-y border-[#F8FAFC]/10 bg-[#0B1222] px-5 py-8 md:px-8">
+        <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["3", "Portfolio projects"],
+            ["6+", "Programming languages"],
+            ["MERN", "Full-stack foundation"],
+            ["IoT + ML", "Research project focus"],
+          ].map(([value, label]) => (
+            <div key={label} className="rounded border border-[#F8FAFC]/10 bg-[#1E293B]/72 p-5">
+              <p className="text-3xl font-semibold text-[#F8FAFC]">{value}</p>
+              <p className="mt-2 text-sm font-medium uppercase tracking-[0.16em] text-[#94A3B8]">
+                {label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="projects" className="bg-[#1E293B] px-5 py-20 md:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -239,14 +339,22 @@ export default function Home() {
                 viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
-                className="rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.25)]"
+                className="flex min-h-full flex-col rounded border border-[#F8FAFC]/10 bg-[#0F172A]/72 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.25)]"
               >
                 <p className="text-sm font-semibold text-[#06B6D4]">{project.type}</p>
                 <h3 className="mt-4 text-2xl font-semibold text-[#F8FAFC]">{project.name}</h3>
-                <p className="mt-4 min-h-36 text-base leading-7 text-[#94A3B8]">
+                <p className="mt-4 text-base leading-7 text-[#94A3B8]">
                   {project.description}
                 </p>
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 space-y-3 border-t border-[#F8FAFC]/10 pt-5">
+                  {project.highlights.map((highlight) => (
+                    <div key={highlight} className="flex gap-3 text-sm leading-6 text-[#94A3B8]">
+                      <span className="mt-2 size-2 shrink-0 rounded-full bg-[#06B6D4]" />
+                      <span>{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-wrap gap-2 pt-2">
                   {project.stack.map((item) => (
                     <span
                       key={item}
@@ -307,6 +415,30 @@ export default function Home() {
                 </article>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section id="process" className="bg-[#0B1222] px-5 py-20 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#06B6D4]">
+              Process
+            </p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#F8FAFC] md:text-5xl">
+              How I approach software work from idea to delivery.
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {process.map((item) => (
+              <article key={item.title} className="rounded border border-[#F8FAFC]/10 bg-[#1E293B] p-6">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#06B6D4]">
+                  {item.step}
+                </p>
+                <h3 className="mt-5 text-2xl font-semibold text-[#F8FAFC]">{item.title}</h3>
+                <p className="mt-4 text-base leading-7 text-[#94A3B8]">{item.body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
